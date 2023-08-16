@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> furniture store Website</title>
+    <!-- LInk To CSS -->
+    <link rel="stylesheet" th:href="@{~/css/style.css}">
+    <!-- Box Icons -->
+    <link rel="stylesheet"
+          th:href="@{~/csshttps://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css}">
+</head>
+<body>
+<!-- Navbar -->
+<header>
+    <a th:href="@{~/user/homepage}" class="navbar-brand" style="color: #f97f06f2"><b>Wood </b> <span style="color: black"><b>Factory.</b></span></a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#new">Best Selling</a></li>
+        <li><a href="#brands">Our Partners</a></li>
+        <li><a href="#shop">Our Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <a th:href="@{~/user/viewAllMyOrders/}+${userdata.id}">Profile</a>
+        <!--            <li><a href="demo.html" class="btn">Profile</a></li>-->
+    </ul>
+</header>
+<!-- Home -->
+<section class="home" id="home" >
+    <div class="home-text">
+        <h1 style="color: white"><Span>Make</Span>Your Comfort <br> Is Our <span>Happiness</span></h1>
+        <i><p style="color: white; font-weight: bold">Our online store makes you feel the quality product is a part of your life. Our service is customer satisfaction.</p>
+        </i>
+        <a href="#shop" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="about-img">
+        <img th:src="@{~/images/abt.jpg}" alt="">
+    </div>
+    <div class="about-text">
+        <span>About Us</span>
+        <h2>Furnishing Dreams,<br> One Piece at a Time.</h2>
+        <p>A furniture store, also known as a furnishings store or home decor store, is a specialized retailer that offers a wide range of furniture pieces and interior decor items.</p>
+        <p>These stores cater to those seeking to enhance their living spaces, providing a variety of furnishings that encompass both functionality and aesthetics.</p>
+        <p>From classic to contemporary designs, a furniture store typically stocks a diverse collection of sofas, chairs, tables, beds, and more, allowing customers to find pieces that match their personal style.</p>
+        <p>With a focus on both comfort and visual appeal, furniture stores aim to help individuals create harmonious and inviting environments within their homes or workspaces.</p>
+        <p>Whether you're looking to furnish a new home or revitalize your existing space, a furniture store is your go-to destination for transforming rooms into personalized sanctuaries.</p>
+        <p>Discover the perfect pieces to complement your lifestyle and make your space truly yours.</p>
+        <a href="#shop" class="btn">Learn More.</a>
+    </div>
+</section>
+
+<!-- best-selling -->
+<section class="new" id="new">
+    <div class="heading">
+        <h2>Best Selling</h2>
+    </div>
+    <div class="new-container">
+        <div class="box" th:each="product:${productfetch}">
+            <a th:href="@{~/user/productinfo/}+${product.id}">
+
+                <div class="box-img">
+                    <img th:src="'data:image/png;base64,'+${product.imageBase64}" alt="">
+                </div>
+                <div class="title-price">
+                    <h3 th:text="${product.productname}"></h3>
+                    <div class="stars">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                </div>
+                <span th:text="${product.price}"></span>
+                <i class='bx bx-cart' ></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Brands -->
+<section class="brands" id="brands">
+    <div class="heading">
+        <h2>Our Brands Partners</h2>
+    </div>
+    <div class="brands-container">
+        <img th:src="@{~/images/ikea.png}" alt="">
+        <img th:src="@{~/images/gi.png}" alt="">
+        <img th:src="@{~/images/d.png}" alt="">
+        <img th:src="@{~/images/ws.svg}" alt="">
+    </div>
+</section>
+
+<!-- Shop -->
+<section class="shop" id="shop">
+    <div class="heading">
+        <span>New Arrival</span>
+        <h2>Shop Now</h2>
+    </div>
+    <!-- Content -->
+    <div class="shop-container">
+        <!-- Box 1 -->
+        <div class="box" th:each="product:${add}">
+            <a th:href="@{~/user/productinfo/}+${product.id}">
+                <div class="box-img">
+                    <img th:src="'data:image/png;base64,'+${product.imageBase64}" alt="">
+                </div>
+                <div class="title-price">
+                    <h3 th:text="${product.productname}"></h3>
+                </div>
+                <div>
+                    <span th:text="'Rs ' + ${product.price}"></span>
+                </div>
+            </a>
+            <!--                <i class='bx bx-cart' >buy</i>-->
+        </div>
+
+    </div>
+</section>
+
+<!--review-->
+<section class="newsletter" id="contact">
+    <h2>Subscribe To Newsletter</h2>
+    <div class="news-box">
+        <input type="text" placeholder="Enter Your Email...">
+        <a href="#" class="btn">Subscribe</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<section class="footer" id="footer">
+    <div class="footer-box">
+        <h2><i><b>फर्नीचर</b></i> <span style="color: black"> Nepal.</span></h2>
+        <p>Elevate Your Living Spaces with Our Exquisite Furniture Creations. Discover Timeless Elegance and Functional Designs for Every Room. Your Source for Quality Craftsmanship and Stylish Comfort. Redefine Your Home, Redesign Your Life.</p>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+        </div>
+    </div>
+    <div class="footer-box">
+        <h3>Services</h3>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Help & Support</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQ</a></li>
+    </div>
+    <div class="footer-box">
+        <h3>Product</h3>
+
+        <li th:each="product:${productfetch}" ><a href="#" th:text="${product.productname}" ></a></li>
+
+    </div>
+    <div class="footer-box contact-info">
+        <h3>Contact</h3>
+        <span>Kathmandy city, Nepal 10004</span>
+        <span>01 523 6784</span>
+        <span>furnitureshop@gmail.com</span>
+    </div>
+</section>
+<!-- Link To JS -->
+<script src="main.js"></script>
+</body>
+</html>
